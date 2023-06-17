@@ -59,3 +59,16 @@ def test_string_to_number():
 
     # Проверяем преобразование строки с десятичной точкой и десятичной частью в целое число
     assert Item.string_to_number('5.5') == 5
+
+def test_str():
+    item1 = Item("Смартфон", 10000, 20)
+    item2 = Item("Ноутбук", 20000, 5)
+    assert str(item1) == 'Смартфон'
+    assert str(item2) == 'Ноутбук'
+
+def test_repr():
+    item1 = Item("Смартфон", 10000, 20)
+    item2 = Item("Ноутбук", 20000, 5)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+    assert repr(item2) == "Item('Ноутбук', 20000, 5)"
+
