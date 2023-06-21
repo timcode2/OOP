@@ -1,6 +1,7 @@
 import csv
 import os
 
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -27,6 +28,10 @@ class Item:
 
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.quantity + other.quantity
 
     def calculate_total_price(self) -> float:
         """
@@ -65,6 +70,7 @@ class Item:
             for row in reader:
                 name, price, quantity = row['name'], row['price'], row['quantity']
                 cls(name, float(price), int(quantity))
+
     @staticmethod
     def string_to_number(string):
         if '.' in string:
