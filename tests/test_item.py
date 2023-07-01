@@ -1,5 +1,5 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
-from src.item import Item
+from src.item import Item, InstantiateCSVError
 import pytest
 
 def test_calculate_total_price():
@@ -72,3 +72,15 @@ def test_repr():
     assert repr(item1) == "Item('Смартфон', 10000, 20)"
     assert repr(item2) == "Item('Ноутбук', 20000, 5)"
 
+def test_instantiate_from_csv_exception_FileNotFoundError():
+    Item.file_name = 'test'
+
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv()
+
+
+def test_instantiate_from_csv_exception_InstantiateCSVError():
+    Item.file_name = 'test_items.csv'
+
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv()
