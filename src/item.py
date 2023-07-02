@@ -85,8 +85,10 @@ class Item:
                     cls(name, float(price), int(quantity))
         except FileNotFoundError:
             print('Файл не найден')
+            raise
         except InstantiateCSVError as e:
             print(e)
+            raise
 
     @staticmethod
     def string_to_number(string):
